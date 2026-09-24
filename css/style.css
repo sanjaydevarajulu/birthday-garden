@@ -16,3 +16,8 @@
 
 /* Keep the photo fan fixed in place; navigate with the arrows. */
 #photoStage{overflow-x:clip}
+
+
+/* Prevent the card fan from creating a sideways scroll area. */
+#gallery{overflow:hidden}
+#photoStage{overflow:hidden}
