@@ -4,3 +4,25 @@
 @media(max-width:640px){.player-volume{width:40px}}
 .photo-stage{height:445px}.photo-card{height:350px;padding-bottom:82px}.photo-card figcaption{bottom:11px;left:12px;right:12px;display:flex;flex-direction:column;gap:4px;font-family:var(--sans);line-height:1.25}.photo-card figcaption strong{font:600 11px var(--sans);letter-spacing:.04em;color:#79523b}.photo-card figcaption span{font:15px/1.15 var(--script);color:#58463a}.lightbox figcaption{white-space:pre-line;line-height:1.45}.lightbox figcaption::first-line{font-family:var(--serif);font-size:20px}
 @media(max-width:640px){.photo-stage{height:370px}.photo-card{height:292px;padding-bottom:76px}.photo-card figcaption{bottom:9px;left:9px;right:9px;gap:3px}.photo-card figcaption strong{font-size:10px}.photo-card figcaption span{font-size:13px}}
+
+/* Scroll through the photographs directly, with a clear next-section action. */
+.section-next{width:max-content;max-width:100%;margin:clamp(44px,7vw,82px) auto 0;display:flex;align-items:center;gap:18px;padding:13px 18px 13px 22px;border:1px solid #a97b4b66;border-radius:999px;color:#725337;background:#fff9;text-decoration:none;text-transform:uppercase;font-size:10px;letter-spacing:.12em;transition:transform .25s ease,background .25s ease,border-color .25s ease}
+.section-next:hover,.section-next:focus-visible{transform:translateY(-2px);background:#fff;border-color:#a97b4b;outline:none}
+.section-next b{font-size:17px;font-weight:400;color:#bc8742}
+.section-next-light{position:absolute;z-index:3;left:50%;bottom:40px;transform:translateX(-50%);margin:0;color:#fff4df;border-color:#fff7;background:#fff1;white-space:nowrap}
+.section-next-light:hover,.section-next-light:focus-visible{transform:translate(-50%,-2px);background:#fff2;border-color:#fff}
+.photo-stage{height:445px;margin:0 auto;display:flex;align-items:center;gap:18px;overflow-x:auto;overflow-y:hidden;padding:15px max(22px,calc((100% - 270px)/2));scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#c4a779 #e9dfcd}
+.photo-stage::-webkit-scrollbar{height:8px}.photo-stage::-webkit-scrollbar-track{background:#e9dfcd;border-radius:8px}.photo-stage::-webkit-scrollbar-thumb{background:#c4a779;border-radius:8px}
+.photo-card{position:relative;inset:auto;left:auto;top:auto;flex:0 0 clamp(220px,25vw,270px);width:auto;height:350px;opacity:1;transform:none!important;z-index:auto;scroll-snap-align:center;cursor:pointer}
+.gallery-scroll-hint{text-align:center;color:#90785e;font-size:11px;letter-spacing:.04em;margin:15px auto 3px}
+.gallery-count{text-align:center;color:#a47d50;font-size:10px;letter-spacing:.16em}
+@media(max-width:640px){.photo-stage{height:370px;margin:0 -23px;padding:12px max(28px,calc((100vw - min(78vw,280px))/2));gap:14px}.photo-card{flex-basis:min(78vw,280px);height:292px;padding-bottom:76px}.section-next{margin-top:48px;padding:13px 16px 13px 18px;font-size:9px;gap:12px}.section-next-light{left:50%;bottom:28px;margin:0}.moon-section{padding-bottom:110px}}
+.section-next{font:inherit;cursor:pointer}
+
+/* Keep the continue action in a consistent bottom-center position on each scene. */
+.message,.garden-section,.recordings-section,.memories-section,.gallery-section,.letters-section,.wish-section{min-height:100svh;display:flex;flex-direction:column}
+.section-next{appearance:none;align-self:center;justify-content:center;margin:auto auto 0;width:max-content;max-width:calc(100% - 12px);font:600 10px/1.2 var(--sans);letter-spacing:.13em;cursor:pointer;box-shadow:0 8px 24px #45331a12}
+.section-next:hover,.section-next:focus-visible{box-shadow:0 10px 28px #45331a20;outline:2px solid #b3824c;outline-offset:4px}
+.section-next-light{align-self:auto;left:50%;margin:0;bottom:clamp(24px,5vh,48px);color:#fff3d7;border-color:#f0ce8e99;background:#211e3dcc;box-shadow:0 8px 30px #11112666}
+.section-next-light:hover,.section-next-light:focus-visible{color:#fff9eb;background:#302943ed;border-color:#f0ce8e;outline-color:#f0ce8e;transform:translate(-50%,-2px)}
+@media(max-width:640px){.message,.garden-section,.recordings-section,.memories-section,.gallery-section,.letters-section,.wish-section{min-height:100svh}.section-next{font-size:9px;letter-spacing:.1em}.section-next-light{align-self:auto;left:50%;margin:0}}
