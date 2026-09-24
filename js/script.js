@@ -191,7 +191,6 @@ function setupCake(){const cake=$("#cake"),button=$("#blowCandles"),reveal=$("#c
 function setupPage(){
   const topbar=$("#topbar");function onScroll(){topbar.classList.toggle("scrolled",scrollY>70);const max=document.documentElement.scrollHeight-innerHeight;$("#pageProgress").style.width=`${max>0?scrollY/max*100:0}%`;}
   window.addEventListener("scroll",onScroll,{passive:true});onScroll();
-  $$(".section-next[data-next]").forEach(button=>button.addEventListener("click",()=>{$(button.dataset.next)?.scrollIntoView({behavior:reducedMotion?"auto":"smooth",block:"start"});}));
   $("#replayExperience").addEventListener("click",()=>{if(!reducedMotion){$$('.finale-line').forEach(el=>{el.style.animation="none";void el.offsetHeight;el.style.animation="";});}$("#opening").scrollIntoView({behavior:reducedMotion?"auto":"smooth"});});
 }
 function init(){setBirthdayContent();renderFlowers();renderRecordings();renderMemories();renderPhotos();renderLetters();setupDialogs();setupMusic();setupCake();setupPage();}
