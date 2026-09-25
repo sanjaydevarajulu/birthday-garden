@@ -34,8 +34,10 @@
 .wish-section.celebration-active .cake-glow{animation:cakeGlowPulse 2.2s ease-in-out 2}
 .wish-section.celebration-active .cake{animation:cakeCelebrate .9s cubic-bezier(.2,.8,.2,1) both}
 .cake-reveal.shown{display:flex;flex-direction:column;align-items:center;gap:5px;position:relative;z-index:3}
-.cake-reveal-title{font:inherit;font-size:1.2em;font-weight:400;animation:cakeTitleBloom .9s cubic-bezier(.16,1,.3,1) both}
-.cake-reveal-wish{max-width:560px;padding:0 18px;font:clamp(18px,2.5vw,25px)/1.35 var(--serif);font-style:italic;color:#765e4c;opacity:0;animation:cakeWishBloom .8s .35s cubic-bezier(.16,1,.3,1) both}
+.cake-reveal-title{font:inherit;font-size:1.2em;font-weight:400}
+.cake-reveal.shown .cake-reveal-title{animation:cakeTitleBloom .9s cubic-bezier(.16,1,.3,1) both}
+.cake-reveal-wish{max-width:560px;padding:0 18px;font:clamp(18px,2.5vw,25px)/1.35 var(--serif);font-style:italic;color:#765e4c;opacity:0}
+.cake-reveal.shown .cake-reveal-wish{animation:cakeWishBloom .8s .35s cubic-bezier(.16,1,.3,1) both}
 .wish-celebration{position:absolute;z-index:4;inset:0;overflow:hidden;pointer-events:none}
 .celebration-particle{position:absolute;left:50%;top:57%;font-size:var(--size);line-height:1;opacity:0;filter:drop-shadow(0 5px 7px #8a632b33);animation:petalWishFlight var(--duration) var(--delay) cubic-bezier(.16,.7,.25,1) both}
 @keyframes petalWishFlight{0%{opacity:0;transform:translate(-50%,0) scale(.25) rotate(0)}12%{opacity:1}72%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),var(--dy)) scale(var(--scale)) rotate(var(--turn))}}

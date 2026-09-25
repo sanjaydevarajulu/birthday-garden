@@ -208,7 +208,27 @@ function setupMusic(){
   backgroundAudio.addEventListener("timeupdate",()=>{const progress=$("#musicProgress");if(progress&&backgroundAudio.duration)progress.style.width=`${backgroundAudio.currentTime/backgroundAudio.duration*100}%`;});
   $("#enterGarden").addEventListener("click",()=>{document.body.classList.add("entered");$("#message").scrollIntoView({behavior:reducedMotion?"auto":"smooth"});panel.hidden=false;startMusic();});
 }
-function setupCake(){const cake=$("#cake"),button=$("#blowCandles"),reveal=$("#cakeReveal"),section=$("#wish");let done=false;function blow(){if(done)return;done=true;cake.classList.add("blown");section.classList.add("celebration-active");$("#cakeHint").textContent="May your year bloom with joy, laughter, and beautiful surprises.";reveal.classList.add("shown");button.querySelector("span").textContent="Your wish is on its way";button.disabled=true;if(reducedMotion)return;const burst=document.createElement("div");burst.className="wish-celebration";burst.setAttribute("aria-hidden","true");const symbols=["🌻","🦋","🌼","✦","♡","✿"];for(let i=0;i<32;i++){const particle=document.createElement("span"),angle=(i/32)*Math.PI*2+(Math.random()-.5)*.24,distance=90+Math.random()*250,dx=Math.cos(angle)*distance,dy=Math.sin(angle)*Math.min(distance,window.innerHeight*.34)-80;particle.className="celebration-particle";particle.textContent=symbols[i%symbols.length];particle.style.setProperty("--dx",`${dx.toFixed(0)}px`);particle.style.setProperty("--dy",`${dy.toFixed(0)}px`);particle.style.setProperty("--turn",`${Math.round(Math.random()*300-150)}deg`);particle.style.setProperty("--scale",`${(.7+Math.random()*.8).toFixed(2)}`);particle.style.setProperty("--duration",`${(2.8+Math.random()*1.1).toFixed(2)}s`);particle.style.setProperty("--delay",`${(Math.random()*.2).toFixed(2)}s`);particle.style.setProperty("--size",`${16+Math.random()*16}px`);burst.append(particle);}section.prepend(burst);setTimeout(()=>burst.remove(),4300);}
+function setupCake(){
+  const cake=$("#cake"),button=$("#blowCandles"),reveal=$("#cakeReveal"),section=$("#wish");
+  let burstTimer;
+  function blow(){
+    cake.classList.add("blown");
+    section.classList.remove("celebration-active");void section.offsetWidth;section.classList.add("celebration-active");
+    reveal.classList.remove("shown");void reveal.offsetWidth;reveal.classList.add("shown");
+    $("#cakeHint").textContent="May your year bloom with joy, laughter, and beautiful surprises.";
+    button.querySelector("span").textContent="Celebrate again";
+    section.querySelector(".wish-celebration")?.remove();
+    clearTimeout(burstTimer);
+    if(reducedMotion)return;
+    const burst=document.createElement("div");burst.className="wish-celebration";burst.setAttribute("aria-hidden","true");
+    const symbols=["🌻","🦋","🌼","✦","♡","✿"];
+    for(let i=0;i<32;i++){
+      const particle=document.createElement("span"),angle=(i/32)*Math.PI*2+(Math.random()-.5)*.24,distance=90+Math.random()*250,dx=Math.cos(angle)*distance,dy=Math.sin(angle)*Math.min(distance,window.innerHeight*.34)-80;
+      particle.className="celebration-particle";particle.textContent=symbols[i%symbols.length];
+      particle.style.setProperty("--dx",`${dx.toFixed(0)}px`);particle.style.setProperty("--dy",`${dy.toFixed(0)}px`);particle.style.setProperty("--turn",`${Math.round(Math.random()*300-150)}deg`);particle.style.setProperty("--scale",`${(.7+Math.random()*.8).toFixed(2)}`);particle.style.setProperty("--duration",`${(2.8+Math.random()*1.1).toFixed(2)}s`);particle.style.setProperty("--delay",`${(Math.random()*.2).toFixed(2)}s`);particle.style.setProperty("--size",`${16+Math.random()*16}px`);burst.append(particle);
+    }
+    section.prepend(burst);burstTimer=setTimeout(()=>burst.remove(),4300);
+  }
   button.addEventListener("click",blow);cake.addEventListener("click",blow);cake.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();blow();}});
 }
 function setupPage(){
