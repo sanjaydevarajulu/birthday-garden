@@ -24,10 +24,10 @@ const sunflowers = [
 ];
 
 const memories = [
-  { title:"A favourite little moment", text:"The kind of moment that seemed small while it was happening, then quietly became one I kept close.", image:"assets/images/memory-1.jpg", audio:"" },
-  { title:"That time we couldn't stop laughing", text:"I still think about it and smile. Some days are made brighter just by remembering.", image:"assets/images/memory-2.jpg", audio:"" },
-  { title:"A day I wish I could replay", text:"No grand occasion needed—just you, me, and the lovely feeling of being right where we were.", image:"assets/images/memory-3.jpg", audio:"" },
-  { title:"One for the memory box", text:"Here's to all the moments we've collected, and the many more waiting just around the corner.", image:"assets/images/memory-4.jpg", audio:"" }
+  { title:"A favourite little moment", text:"The kind of moment that seemed small while it was happening, then quietly became one I kept close.", image:"assets/images/photo-1.png", audio:"" },
+  { title:"That time we couldn't stop laughing", text:"I still think about it and smile. Some days are made brighter just by remembering.", image:"assets/images/photo-2.png", audio:"" },
+  { title:"A day I wish I could replay", text:"No grand occasion needed—just you, me, and the lovely feeling of being right where we were.", image:"assets/images/photo-3.jpeg", audio:"" },
+  { title:"One for the memory box", text:"Here's to all the moments we've collected, and the many more waiting just around the corner.", image:"assets/images/photo-4.jpeg", audio:"" }
 ];
 
 const recordings = [
