@@ -26,8 +26,8 @@ const sunflowers = [
 const memories = [
   { title:"A favourite little moment", text:"The kind of moment that seemed small while it was happening, then quietly became one I kept close.", image:"assets/images/memory-01.jpeg", audio:"" },
   { title:"That time we couldn't stop laughing", text:"I still think about it and smile. Some days are made brighter just by remembering.", image:"assets/images/memory-02.jpeg", audio:"" },
-  { title:"A day I wish I could replay", text:"No grand occasion needed—just you, me, and the lovely feeling of being right where we were.", image:"assets/images/memory-03.jpeg", audio:"" },
-  { title:"One for the memory box", text:"Here's to all the moments we've collected, and the many more waiting just around the corner.", image:"assets/images/memory-04.jpeg", audio:"" }
+  { title:"A day I wish I could replay", text:"No grand occasion needed—just you, me, and the lovely feeling of being right where we were.", image:"assets/images/memory-04.jpeg", audio:"" },
+  { title:"One for the memory box", text:"Here's to all the moments we've collected, and the many more waiting just around the corner.", image:"assets/images/memory-03.jpeg", audio:"" }
 ];
 
 // Replace each path with the matching birthday voice recording in assets/audio/.
