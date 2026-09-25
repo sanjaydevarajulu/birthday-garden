@@ -8,7 +8,7 @@ Edit `birthdayConfig` and the arrays near the top of `js/script.js`: `sunflowers
 
 ## Add your own audio
 
-Place up to six birthday voice notes at `assets/audio/birthday-wish-01.mp3` through `birthday-wish-06.mp3`; their paths are listed in the editable `recordingFiles` array in `js/script.js`. The site displays six birthday wish cards. Place background music at `assets/audio/background.mp3` and update `birthdayConfig.backgroundMusic` if needed. The site tries to start the music when it opens. If the browser blocks sound before a visitor interacts, it starts after the first tap or key press; browser autoplay rules cannot be overridden by the site.
+Place up to six birthday voice notes at `assets/audio/birthday-wish-01.mp3` through `birthday-wish-06.mp3`; their paths are listed in the editable `recordingFiles` array in `js/script.js`. The site displays six birthday wish cards. Place background music at `assets/audio/background.mp3` and update `birthdayConfig.backgroundMusic` if needed. The opening prompt's OK button starts the music, then the bottom button continues to the birthday garden. This click also meets browser audio autoplay rules.
 
 The four butterfly memories use separate photos, `assets/images/memory-01.jpeg` through `memory-04.jpeg`, distinct from the 26-image gallery.
 

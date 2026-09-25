@@ -200,10 +200,8 @@ function setupMusic(){
   $("#musicClose").addEventListener("click",()=>panel.hidden=true);
   backgroundAudio.addEventListener("play",update);backgroundAudio.addEventListener("pause",update);
   backgroundAudio.addEventListener("timeupdate",()=>{const progress=$("#musicProgress");if(progress&&backgroundAudio.duration)progress.style.width=`${backgroundAudio.currentTime/backgroundAudio.duration*100}%`;});
+  $("#welcomeOk").addEventListener("click",()=>{$("#welcomeDialog").close();panel.hidden=false;startMusic();});
   $("#enterGarden").addEventListener("click",()=>{document.body.classList.add("entered");$("#message").scrollIntoView({behavior:reducedMotion?"auto":"smooth"});panel.hidden=false;startMusic();});
-  // Try to play as soon as the page opens. Browsers that block audible autoplay
-  // will start it on the visitor's first interaction instead.
-  startMusic();
 }
 function setupCake(){
   const cake=$("#cake"),button=$("#blowCandles"),reveal=$("#cakeReveal"),section=$("#wish");
@@ -233,5 +231,5 @@ function setupPage(){
   window.addEventListener("scroll",onScroll,{passive:true});onScroll();$("#galleryPrev").addEventListener("click",()=>movePhoto(-1));$("#galleryNext").addEventListener("click",()=>movePhoto(1));
   $("#replayExperience").addEventListener("click",()=>{if(!reducedMotion){$$('.finale-line').forEach(el=>{el.style.animation="none";void el.offsetHeight;el.style.animation="";});}$("#opening").scrollIntoView({behavior:reducedMotion?"auto":"smooth"});});
 }
-function init(){setBirthdayContent();renderFlowers();renderRecordings();renderMemories();renderPhotos();renderLetters();setupDialogs();setupMusic();setupCake();setupPage();}
+function init(){setBirthdayContent();renderFlowers();renderRecordings();renderMemories();renderPhotos();renderLetters();setupDialogs();setupMusic();setupCake();setupPage();$("#welcomeDialog").showModal();}
 init();

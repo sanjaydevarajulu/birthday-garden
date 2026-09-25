@@ -31,9 +31,9 @@
         <p class="eyebrow reveal">A small world, made just for you</p>
         <h1 class="opening-line reveal">Some people make the world<br>brighter simply by being in it<span class="gold-dot">.</span></h1>
         <p class="opening-script reveal">Happy Birthday, <span data-name>Pattu</span> <span class="sunflower-emoji">🌻</span></p>
-        <button class="primary-button enter-button reveal" id="enterGarden"><span>Enter your birthday garden</span><span class="button-arrow">↗</span></button>
-        <p class="opening-footnote reveal">Best experienced with the sound on, whenever you're ready.</p>
+        <p class="opening-footnote reveal">A little birthday world, made just for you.</p>
       </div>
+      <button class="section-next section-next-light opening-next" id="enterGarden" type="button"><span>Continue to your birthday garden</span><b aria-hidden="true">↓</b></button>
       <div class="scroll-hint" aria-hidden="true"><span></span> a little further</div>
       <div class="butterfly butterfly-one" aria-hidden="true">🦋</div><div class="butterfly butterfly-two" aria-hidden="true">🦋</div>
     </section>
@@ -110,6 +110,15 @@
     <button id="musicPlay" aria-label="Play background music">▶</button><div class="music-panel-meta"><span>For your garden</span><div class="music-progress"><span id="musicProgress"></span></div></div><button id="musicMute" aria-label="Mute background music">◖</button><input id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.34" aria-label="Music volume"><button class="music-close" id="musicClose" aria-label="Close music controls">×</button>
   </aside>
   <audio id="backgroundAudio" loop preload="none"></audio>
+
+  <dialog class="welcome-dialog" id="welcomeDialog" aria-labelledby="welcomeTitle" aria-describedby="welcomeText">
+    <div class="welcome-dialog-inner">
+      <div class="section-kicker"><span>🦋</span><i></i> A little note</div>
+      <h2 id="welcomeTitle">Before we begin</h2>
+      <p id="welcomeText">Please play the music, then press the button at the bottom to continue to the next page.</p>
+      <button class="primary-button welcome-ok" id="welcomeOk" type="button"><span>OK, play the music</span><span class="button-arrow">♫</span></button>
+    </div>
+  </dialog>
 
   <dialog class="content-dialog" id="contentDialog"><button class="dialog-close" aria-label="Close dialog">×</button><div id="dialogContent"></div></dialog>
   <dialog class="lightbox" id="lightbox"><button class="lightbox-close" aria-label="Close photo viewer">×</button><button class="lightbox-arrow lightbox-prev" aria-label="Previous photo">←</button><figure><img id="lightboxImage" alt=""><figcaption id="lightboxCaption"></figcaption></figure><button class="lightbox-arrow lightbox-next" aria-label="Next photo">→</button></dialog>
