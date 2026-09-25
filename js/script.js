@@ -173,8 +173,13 @@ function renderMemories(){
 }
 function showMemory(memory,button){
   const preview=$("#memoryPreview");preview.classList.add("memory-selected");
+  let previewImage;
+  if(memory.image){previewImage=document.createElement("img");previewImage.className="memory-preview-image";previewImage.src=memory.image;previewImage.alt=`A photo from ${safeText(memory.title)}`;previewImage.onerror=()=>{const fallback=document.createElement("span");fallback.className="memory-preview-fallback";fallback.textContent="A memory, held close ✦";previewImage.replaceWith(fallback);};}
+  else{previewImage=document.createElement("span");previewImage.className="memory-preview-fallback";previewImage.textContent="A memory, held close ✦";}
+  const previewTitle=document.createElement("strong");previewTitle.className="memory-preview-title";previewTitle.textContent=safeText(memory.title);
+  const previewText=document.createElement("span");previewText.className="memory-preview-text";previewText.textContent=safeText(memory.text);
+  preview.replaceChildren(previewImage,previewTitle,previewText);
   const img=memory.image?`<img src="${safeText(memory.image)}" alt="A photo from ${safeText(memory.title)}" onerror="this.outerHTML='<div class=&quot;dialog-fallback&quot;>A memory, held close ✦</div>'">`:"<div class=\"dialog-fallback\">A memory, held close ✦</div>";
-  preview.innerHTML=`<span class="preview-icon">✦</span><span>${safeText(memory.title)}</span>`;
   if(button){button.animate?.([{transform:"scale(1)"},{transform:"scale(1.5) translateY(-30px)"}],{duration:reducedMotion?1:500,easing:"ease-out"});}
   openContent(`<div class="section-kicker"><span>🦋</span><i></i> A memory to keep</div><h2>${safeText(memory.title)}</h2>${img}<p>${safeText(memory.text)}</p>${memory.audio?`<button class="primary-button dialog-audio" data-memory-audio="${safeText(memory.audio)}">▶ &nbsp; Listen to this memory</button>`:""}`);
   const audioButton=$("[data-memory-audio]");audioButton?.addEventListener("click",()=>{voiceAudio.src=memory.audio;voiceAudio.play().catch(()=>showToast(`Add the recording at ${memory.audio} to listen.`));});
