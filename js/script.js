@@ -24,17 +24,46 @@ const sunflowers = [
 ];
 
 const memories = [
-  { title:"A favourite little moment", text:"The kind of moment that seemed small while it was happening, then quietly became one I kept close.", image:"assets/images/photo-1.png", audio:"" },
-  { title:"That time we couldn't stop laughing", text:"I still think about it and smile. Some days are made brighter just by remembering.", image:"assets/images/photo-2.png", audio:"" },
-  { title:"A day I wish I could replay", text:"No grand occasion needed—just you, me, and the lovely feeling of being right where we were.", image:"assets/images/photo-3.jpeg", audio:"" },
-  { title:"One for the memory box", text:"Here's to all the moments we've collected, and the many more waiting just around the corner.", image:"assets/images/photo-4.jpeg", audio:"" }
+  { title:"A favourite little moment", text:"The kind of moment that seemed small while it was happening, then quietly became one I kept close.", image:"assets/images/memory-01.jpeg", audio:"" },
+  { title:"That time we couldn't stop laughing", text:"I still think about it and smile. Some days are made brighter just by remembering.", image:"assets/images/memory-02.jpeg", audio:"" },
+  { title:"A day I wish I could replay", text:"No grand occasion needed—just you, me, and the lovely feeling of being right where we were.", image:"assets/images/memory-03.jpeg", audio:"" },
+  { title:"One for the memory box", text:"Here's to all the moments we've collected, and the many more waiting just around the corner.", image:"assets/images/memory-04.jpeg", audio:"" }
 ];
 
-const recordings = [
-  { title:"A Little Message For You", description:"Something I wanted you to hear...", file:"assets/audio/recording-1.mp3" },
-  { title:"One More Thing", description:"Listen when you have a quiet moment...", file:"assets/audio/recording-2.mp3" },
-  { title:"A Birthday Wish", description:"A little wish, in my own voice.", file:"assets/audio/recording-3.mp3" }
+// Replace each path with the matching birthday voice recording in assets/audio/.
+const recordingFiles = [
+  "assets/audio/birthday-wish-01.mp3",
+  "assets/audio/birthday-wish-02.mp3",
+  "assets/audio/birthday-wish-03.mp3",
+  "assets/audio/birthday-wish-04.mp3",
+  "assets/audio/birthday-wish-05.mp3",
+  "assets/audio/birthday-wish-06.mp3",
+  "assets/audio/birthday-wish-07.mp3",
+  "assets/audio/birthday-wish-08.mp3",
+  "assets/audio/birthday-wish-09.mp3",
+  "assets/audio/birthday-wish-10.mp3",
+  "assets/audio/birthday-wish-11.mp3",
+  "assets/audio/birthday-wish-12.mp3",
+  "assets/audio/birthday-wish-13.mp3",
+  "assets/audio/birthday-wish-14.mp3",
+  "assets/audio/birthday-wish-15.mp3",
+  "assets/audio/birthday-wish-16.mp3",
+  "assets/audio/birthday-wish-17.mp3",
+  "assets/audio/birthday-wish-18.mp3",
+  "assets/audio/birthday-wish-19.mp3",
+  "assets/audio/birthday-wish-20.mp3",
+  "assets/audio/birthday-wish-21.mp3",
+  "assets/audio/birthday-wish-22.mp3",
+  "assets/audio/birthday-wish-23.mp3",
+  "assets/audio/birthday-wish-24.mp3",
+  "assets/audio/birthday-wish-25.mp3",
+  "assets/audio/birthday-wish-26.mp3"
 ];
+const recordings = recordingFiles.map((file, index) => ({
+  title: "Birthday Wish " + String(index + 1).padStart(2, "0"),
+  description: "A birthday wish, just for you.",
+  file
+}));
 
 const photos = [
   { image:"assets/images/photo-1.png", title:"🌻 Smile", caption:"That smile has a way of making everything feel a little brighter." },
