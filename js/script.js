@@ -198,7 +198,22 @@ function setupDialogs(){
 function setupMusic(){
   backgroundAudio.src=birthdayConfig.backgroundMusic;const panel=$("#musicPanel"),toggle=$("#musicToggle"),play=$("#musicPlay"),volume=$("#musicVolume");backgroundAudio.volume=Number(volume.value);
   function update(){const playing=!backgroundAudio.paused;toggle.classList.toggle("playing",playing);toggle.setAttribute("aria-label",playing?"Pause background music":"Play background music");play.textContent=playing?"Ⅱ":"▶";}
-  async function startMusic(){try{await backgroundAudio.play();}catch{showToast(`Add background music at ${birthdayConfig.backgroundMusic} to hear it.`);}update();}
+  let waitingForGesture=false;
+  function removeGestureFallback(){if(!waitingForGesture)return;waitingForGesture=false;document.removeEventListener("pointerdown",resumeAfterGesture,true);document.removeEventListener("keydown",resumeAfterGesture,true);}
+  function resumeAfterGesture(event){
+    if(event.target.closest?.(".music-toggle, .music-panel, #enterGarden"))return;
+    removeGestureFallback();startMusic();
+  }
+  function waitForGesture(){if(waitingForGesture)return;waitingForGesture=true;document.addEventListener("pointerdown",resumeAfterGesture,true);document.addEventListener("keydown",resumeAfterGesture,true);}
+  async function startMusic(){
+    removeGestureFallback();
+    try{await backgroundAudio.play();}
+    catch(error){
+      if(error?.name==="NotAllowedError")waitForGesture();
+      else if(backgroundAudio.error)showToast(`Check that the music file exists at ${birthdayConfig.backgroundMusic}.`);
+    }
+    update();
+  }
   toggle.addEventListener("click",()=>{panel.hidden=false;if(backgroundAudio.paused)startMusic();else{backgroundAudio.pause();update();}});
   play.addEventListener("click",()=>backgroundAudio.paused?startMusic():(backgroundAudio.pause(),update()));
   $("#musicMute").addEventListener("click",()=>{backgroundAudio.muted=!backgroundAudio.muted;$("#musicMute").textContent=backgroundAudio.muted?"×":"◖";});
@@ -207,6 +222,9 @@ function setupMusic(){
   backgroundAudio.addEventListener("play",update);backgroundAudio.addEventListener("pause",update);
   backgroundAudio.addEventListener("timeupdate",()=>{const progress=$("#musicProgress");if(progress&&backgroundAudio.duration)progress.style.width=`${backgroundAudio.currentTime/backgroundAudio.duration*100}%`;});
   $("#enterGarden").addEventListener("click",()=>{document.body.classList.add("entered");$("#message").scrollIntoView({behavior:reducedMotion?"auto":"smooth"});panel.hidden=false;startMusic();});
+  // Try to play as soon as the page opens. Browsers that block audible autoplay
+  // will start it on the visitor's first interaction instead.
+  startMusic();
 }
 function setupCake(){
   const cake=$("#cake"),button=$("#blowCandles"),reveal=$("#cakeReveal"),section=$("#wish");
